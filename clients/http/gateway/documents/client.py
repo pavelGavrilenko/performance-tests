@@ -17,7 +17,7 @@ class GetTariffDocumentResponseDict(TypedDict):
 
 
 class GetContractDocumentResponseDict(TypedDict):
-    tariff: DocumentDict
+    contract: DocumentDict
 
 
 class DocumentsGatewayHTTPClient(HTTPClient):

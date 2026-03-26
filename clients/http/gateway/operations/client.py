@@ -247,7 +247,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         response = self.make_fee_operation_api(request)
         return response.json()
 
-    def make_top_up_operation_(self, card_id: str, account_id: str) -> MakeTopUpOperationResponseDict:
+    def make_top_up_operation(self, card_id: str, account_id: str) -> MakeTopUpOperationResponseDict:
         request = MakeTopUpOperationRequestDict(
             status="COMPLETED",
             amount=66.77,

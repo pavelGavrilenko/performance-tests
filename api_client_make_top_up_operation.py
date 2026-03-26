@@ -19,3 +19,7 @@ make_top_up_operation_response = operations_gateway_client.make_top_up_operation
     account_id=open_debit_card_account_response.account.id
 )
 print('Make top up operation response:', make_top_up_operation_response)
+
+print("Check model_dump(by_alias=True) operation request :", operations_gateway_client.get_operation(
+    operation_id=make_top_up_operation_response.operation.id)
+      )

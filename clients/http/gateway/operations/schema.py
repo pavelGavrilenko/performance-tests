@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field, ConfigDict
 from strenum import StrEnum
 
 from clients.http.gateway.documents.schema import DocumentSchema
+from tools.fakers import fake
 
 
 class OperationStatus(StrEnum):
@@ -33,14 +34,14 @@ class GetOperationsSummaryQuerySchema(BaseModel):
 
 class MakeOperationRequestSchema(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
-    status: OperationStatus
-    amount: float = Field(default=66.77)
+    status: OperationStatus = Field(default_factory=lambda: fake.enum(OperationStatus))
+    amount: float = Field(default_factory=lambda :fake.amount())
     card_id: str = Field(alias="cardId")
     account_id: str = Field(alias="accountId")
 
 
 class MakePurchaseOperationRequestSchema(MakeOperationRequestSchema):
-    category: str = Field(default="IceCream")
+    category: str = Field(default_factory=lambda :fake.category())
 
 
 class MakeFeeOperationRequestSchema(MakeOperationRequestSchema):
